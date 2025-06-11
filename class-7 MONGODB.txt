@@ -1,0 +1,10 @@
+cmd>mongosh
+
+show databases
+
+use database
+
+show collection
+
+
+cls

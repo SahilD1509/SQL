@@ -1,0 +1,90 @@
+class - 3
+
+#creating table with constraints
+
+CREATE TABLE employees(
+eid int UNIQUE,
+ename varchar(32) NOT NULL,
+esal float NOT NULL,
+age int CHECK(age>=18),
+loc varchar(32) DEFAULT 'Bangalore'
+);
+
+INSERT INTO employees
+values
+(101,'RG',45666.56,52,'waynad');
+
+IF we try AGAIN same data
+INSERT INTO employees
+values
+(101,'RG',45666.56,52,'waynad');
+ERROR 1062 (23000): Duplicate entry '101' for key 'employees.eid'
+
+
+INSERT INTO employees
+values
+(102,'SG',56000.52,8,'Noida');
+
+INSERT INTO employees(ename,esal,age)
+values
+('PG',65000.33,48);
+
+INSERT INTO employees(eid,esal,age,loc)
+values
+(103,65000.33,48,'Delhi');
+ERROR 1364 (HY000): Field 'ename' doesn't have a default value
+
+INSERT INTO employees(ename,esal,age,loc)
+values
+('DD',75000.33,80,'Delhi');
+
+#creating table with primary key
+CREATE TABLE employees(
+eid int UNIQUE,
+ename varchar(32) NOT NULL,
+esal float NOT NULL,
+age int CHECK(age>=18),
+loc varchar(32) DEFAULT 'Bangalore',
+PRIMARY KEY(eid)
+);
+
+mysql> INSERT INTO employees(ename,esal,age)
+    -> values
+    -> ('PG',65000.33,48);
+ERROR 1364 (HY000): Field 'eid' doesn't have a default value
+
+
+INSERT INTO employees(eid,ename,esal,age)
+values
+(102,'PG',65000.33,48);
+
+INSERT INTO employees
+values
+(102,'PG',65000.33,48,'Delhi');
+
+
+
+#how TO DELETE row based ON row number?
+
+CREATE TABLE users(
+uid int,
+uname VARCHAR(32),
+loc VARCHAR(32)
+);
+
+INSERT INTO users
+VALUES
+(101,'Rahul','Wayanad'),
+(101,'Rahul','Wayanad'),
+(101,'Rahul','Wayanad');
+
+SELECT *FROM users;
+
+DELETE FROM users;
+
+DELETE FROM users WHERE uid=101;
+
+to delete specific row
+delete from users
+order by uid
+limit 1;

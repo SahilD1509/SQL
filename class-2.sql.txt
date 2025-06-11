@@ -1,0 +1,37 @@
+
+CREATE TABLE customers(
+c_id int,
+cname varchar(32),
+email varchar(50),
+loc varchar(32)
+);
+
+inserting values
+INSERT INTO customers
+VALUES
+(101,'RG','rg@pm.com','wayand')
+
+inserting multiple 
+INSERT INTO customers
+VALUES
+(101,'SG','sg@gmail.com','New-Delhi'),
+(102,'PG','pg@pm.com','New-Delhi'),
+(103,'Modi','modi@pm.com','Itlay');
+
+inserting data in specific columns
+INSERT INTO customers(c_id, cname)
+VALUES
+(105,'Niraj'),
+(106,'Vali'),
+(107,'Abhi');
+
+Displaying data for specific columns
+SELECT c_id as id,
+       cname as name,
+	   loc as location
+	   from customers;
+	   
+	   
+SELECT count(*) from customers;
+for specific condition
+SELECT count(*) from customers where gender = "Male";

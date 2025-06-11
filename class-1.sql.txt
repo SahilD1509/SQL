@@ -1,0 +1,59 @@
+create table employees();
+create table employees(
+eid int,
+ename varchar(32),
+esal float,
+loc varchar(32)
+);
+
+
+select * from employees;
+
+INSERT DATA
+insert into employees
+values
+(101,'Rahul',45000.25,'wayand');
+
+INSERT MULTIPLE ROWS
+insert into employees
+values
+(102,'Sonia',55000.55,'Delhi'),
+(103,'Priyanka',46000.35,'Noida'),
+(104,'Modi',56880.64,'Gujrat');
+
+deleting Data
+DELETE FROM employees;
+
+CLASS-2
+
+deleting some data
+DELETE FROM employees where eid=102;
+
+to delete all schema 
+DROP table employees;(table name)
+
+for update the data 
+UPDATE employees
+SET ename = 'Sonia Gandhi'
+where eid = 102;
+
+for multiple data 
+UPDATE employees
+set esal = 56668.55
+where eid = 103;
+
+
+READING DATA 
+SELECT * from employees
+
+FOR SPECIFIC or REQUIRED person
+SELECT eid as emp_id,
+ename as emp_name
+from employees;
+
+Adding Filter in large data for getting specific output 
+where is added
+SELECT eid as emp_id,
+ename as emp_name
+from employees
+where location = 'Delhi'

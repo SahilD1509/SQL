@@ -1,0 +1,24 @@
+create table employees();
+create table employees(
+eid int,
+ename varchar(32),
+esal float,
+loc varchar(32)
+);
+
+select * from employees;
+
+INSERT DATA
+insert into employees
+values
+(101,'Rahul',45000.25,'wayand');
+
+INSERT MULTIPLE ROWS
+insert into employees
+values
+(102,'Sonia',55000.55,'Delhi'),
+(103,'Priyanka',46000.35,'Noida'),
+(104,'Modi',56880.64,'Gujrat');
+
+deleting Data
+DELETE FROM employees;

@@ -1,0 +1,61 @@
+creating table with constraints
+
+create table bunit(
+b_id int,
+bu_name varchar(32) NOT NULL,
+loc varchar(32) NOT NULL,
+PRIMARY KEY(b_id)
+);
+
+
+INSERT INTO bunit
+values
+(10,'Airtel','INDIA'),
+(11,'ATT','USA'),
+(12,'COLT','LONDON'),
+(13,'Vspain','SPAIN');
+
+
+using constraint for refering bunit
+
+create table employees(
+eid int,
+ename varchar(32) NOT NULL,
+esal float NOT NULL,
+b_id int,
+age int CHECK(age>=18),
+loc varchar(32) DEFAULT 'BANGLORE',
+PRIMARY KEY(ename),
+FOREIGN KEY(b_id) REFERENCES bunit(b_id)
+);
+
+insert into employees
+values
+(101,'RG',45000.45,11,62,'DELHI'),
+(102,'SG',55000.55,11,68,'NOIDA'),
+(103,'PG',65000.65,11,42,'BANGALORE'),
+(104,'MN',75000.75,13,78,'MAHARASHTRA'),
+(105,'AS',85000.85,13,75,'DELHI'),
+(106,'PU',95000.95,10,52,'BANGALORE'),
+(107,'DK SK',85000.85,10,55,'WAYNAD');
+
+#RETERIVE data from multiple tables
+select * from employees, bunit;
+select * from employees, bunit order by eid;
+
+select * from employees emp, bunit bu
+where emp.b_id = bu.b_id;
+
+
+select * from employees emp, bunit bu
+where emp.b_id = bu.b_id
+order by eid;
+
+for specific columns 
+select emp.name AS Employee_name,
+bu.b_name AS BUNIT_Name, 
+employees emp,
+bunit  bu
+WHERE emp.b_id = bu.b_id;
+
+

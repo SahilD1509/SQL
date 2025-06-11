@@ -1,0 +1,100 @@
+DROP DATABASE 11am;
+CREATE DATABASE 11am;
+
+USE 11am;
+show tables;
+
+CREATE TABLE customers();
+CREATE TABLE orders();
+
+
+CREATE TABLE customers(
+c_id int,
+cname VARCHAR(32) NOT null,
+location VARCHAR(32) NOT null,
+PRIMARY KEY(c_id)
+);
+INSERT INTO customers
+VALUES
+(101,'Rahul','Wayanad'),
+(102,'Sonia','New Delhi'),
+(103,'Priyanka','Noida'),
+(104,'Modi','New Delhi'),
+(105,'Amith','New Delhi');
+
+
+CREATE TABLE orders(
+ord_id int,
+details VARCHAR(32) NOT null,
+total INT NOT null,
+cust_id int,
+PRIMARY KEY(ord_id),
+FOREIGN KEY(cust_id) REFERENCES customers(c_id)
+);
+INSERT INTO orders
+VALUES
+(10,'Marker Pen',30,101),
+(11,'Pencil',5,102),
+(12,'MI TV',17000,103),
+(13,'Mouse',800,101),
+(14,'Think Pad',129000,102),
+(15,'MAC Book Air',75000,103),
+(16,'Stapler',50,101);
+
+#Find customers who placed orders without JOINS and with JOINS?
+
+SELECT cust.cname AS "Customer Name",
+	   ord.details AS "Order Details",
+	   ord.total AS Total
+	   FROM  customers cust, orders ord
+	   WHERE cust.c_id = ord.cust_id;
+
+
+SELECT 
+  cust.cname AS "Customer Name",
+  ord.details AS "Order Details",
+  ord.total AS Total
+FROM customers cust
+INNER JOIN orders ord
+  ON cust.c_id = ord.cust_id;
+
+
+#List all customers and their orders and details?
+
+
+#List all orders and assiociated customers?
+
+
+select * from customers,orders WHERE customers.c_id=orders.cust_id;
+
+
+
+cust.cname,
+ord.details,
+ord.total
+from customers cust
+RIGHT JOIN orders ord
+on cust.id = ord.cust_id ;
+
+SELECT 
+  cust.cname,
+  ord.details,
+  ord.total
+FROM customers cust
+RIGHT JOIN orders ord
+  ON cust.c_id = ord.cust_id;
+
+cust.cname,
+ord.details,
+ord.total
+from customers cust
+LEFT JOIN orders ord
+on cust.id = ord.cust_id ;
+
+SELECT 
+  cust.cname,
+  ord.details,
+  ord.total
+FROM customers cust
+LEFT JOIN orders ord
+  ON cust.c_id = ord.cust_id;

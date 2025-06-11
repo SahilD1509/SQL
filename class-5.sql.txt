@@ -1,0 +1,80 @@
+create table customers(
+c_id int,
+c_name varchar(32) NOT NULL,
+c_address varchar(32) NOT NULL,
+email varchar(50) NOT NULL,
+mobile varchar(32) NOT NULL,
+PRIMARY KEY(c_id)
+);
+
+insert into customers
+values
+(101,'Sonia','Delhi','sonia@gmail.com','9845684558'),
+(102,'Rahul','New-Delhi','rahil@hmail.com','756489584'),
+(103,'Priya','Noida','priya@gmail.com','8956475895'),
+(104,'Modi','New-Delhi','modi@gmail.com','74558965123'),
+(105,'Amith','Waynad','amith@gmail.com','9589551235')
+;
+
+create table orders(
+order_id int,
+details varchar(32) NOT NULL,
+total int NOT NULL,
+status varchar(32) DEFAULT 'OPEN',
+cust_id int,
+PRIMARY KEY(order_id),
+FOREIGN KEY(cust_id) REFERENCES customers(c_id)
+);
+
+insert into orders (order_id, details, total, status, cust_id) values (1069, 'Honey Mustard Chicken Breasts', 100, 'Yellow', 104);
+insert into orders (order_id, details, total, status, cust_id) values (1741, 'Set of Measuring Spoons', 200, 'Pink', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1318, 'Lemon Garlic Marinade', 300, 'Blue', 104);
+insert into orders (order_id, details, total, status, cust_id) values (1993, 'Mini Fondue Set', 400, 'Violet', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1325, 'Multi-Functional Rice Cooker', 5, 'Puce', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1357, 'Juice Extractor', 6, 'Crimson', 103);
+insert into orders (order_id, details, total, status, cust_id) values (1857, 'Compact Electric Kettle', 7, 'Fuscia', 102);
+insert into orders (order_id, details, total, status, cust_id) values (1828, 'Frozen Broccoli', 8, 'Fuscia', 104);
+insert into orders (order_id, details, total, status, cust_id) values (1173, 'Voice-Controlled Speaker', 9, 'Khaki', 103);
+insert into orders (order_id, details, total, status, cust_id) values (1768, 'Pear and Gorgonzola Salad', 10, 'Purple', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1216, 'Adjustable Height Standing Desk Converter', 11, 'Purple', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1298, 'LED Desk Lamp with USB Charging Port', 12, 'Crimson', 103);
+insert into orders (order_id, details, total, status, cust_id) values (1027, 'Ethical Wool Scarf', 13, 'Aquamarine', 102);
+insert into orders (order_id, details, total, status, cust_id) values (1049, 'Crispy Potato Tots', 14, 'Violet', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1482, 'Canned Black Beans', 15, 'Puce', 104);
+insert into orders (order_id, details, total, status, cust_id) values (1811, 'Plant-Based Protein Bars', 16, 'Red', 103);
+insert into orders (order_id, details, total, status, cust_id) values (1062, 'Sliced Olives', 17, 'Goldenrod', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1045, 'Italian Breadsticks', 18, 'Puce', 102);
+insert into orders (order_id, details, total, status, cust_id) values (1510, 'Weighted Blanket', 19, 'Maroon', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1912, 'Electric Stir Fry Pan', 20, 'Red', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1359, 'High-Quality Yoga Mat', 21, 'Crimson', 102);
+insert into orders (order_id, details, total, status, cust_id) values (1508, 'Electric Hot Pot', 22, 'Aquamarine', 103);
+insert into orders (order_id, details, total, status, cust_id) values (1593, 'Kids'' Gardening Kit', 230, 'Indigo', 103);
+insert into orders (order_id, details, total, status, cust_id) values (1447, 'Spiced Pumpkin Soup', 240, 'Maroon', 104);
+insert into orders (order_id, details, total, status, cust_id) values (1281, 'Pet Water Fountain', 250, 'Crimson', 104);
+insert into orders (order_id, details, total, status, cust_id) values (1094, 'Home Office Chair', 260, 'Green', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1353, 'Noise-Canceling Headphones', 270, 'Aquamarine', 102);
+insert into orders (order_id, details, total, status, cust_id) values (1607, 'Portable Folding Picnic Table', 28, 'Orange', 101);
+insert into orders (order_id, details, total, status, cust_id) values (1277, 'Laundry Detergent', 2900, 'Fuscia', 104);
+insert into orders (order_id, details, total, status, cust_id) values (1363, 'Smoked Salmon', 30, 'Crimson', 104);
+
+
+select cust.c_name AS customer_name,
+ord.details as order_details 
+from customers cust, orders ord
+where cust.c_id = ord.cust_id;
+
+#using join
+select cust.c_name,
+ord.details, 
+ord.total
+from customers cust,
+INNER JOIN cust, orders ord
+on cust.c_id = ord.cust_id;
+
+#with join
+select cust.c_name AS customer_name,
+ord.details as order_details 
+from customers cust
+INNER JOIN
+orders ord
+where cust.c_id = ord.cust_id;
