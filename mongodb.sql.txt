@@ -1,0 +1,31 @@
+#To open mongodatabase
+cmd>mongosh
+
+show databases
+
+use database
+
+show collection
+
+#to create collection
+db.createCollection('users')
+
+#to insert one data
+db.users.insertone({"uid":101, "uname":"ABC"})
+
+#to insert more than one
+db.users.many({data}{data}{data}{data}{data}{data}{data})
+
+#to find data
+db.users.find()
+
+#To Drop collection
+db.users.drop()
+
+#TO find total count of collection
+db.users.find().count();
+db.users.countDocuments();
+
+#To delete one element
+db.users.deleteOne({"ename":"Robbin"});
+cls
